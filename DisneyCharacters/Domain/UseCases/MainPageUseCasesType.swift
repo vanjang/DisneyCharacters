@@ -1,5 +1,5 @@
 //
-//  MainUseCases.swift
+//  MainPageUseCasesType.swift
 //  DisneyCharacters
 //
 //  Created by myung hoon on 30/04/2024.
@@ -7,12 +7,18 @@
 
 import Combine
 
-protocol MainUseCasesType {
-    func getCharacters() -> AnyPublisher<[Character], Error>
+protocol MainPageUseCasesType {
+    func getCharacters(load: PassthroughSubject<Void, Never>, limit: Int) -> AnyPublisher<[Character], Error>
 }
 
-final class MainUseCases: MainUseCasesType {
-    func getCharacters() -> AnyPublisher<[Character], Error> {
-        <#code#>
+final class MainPageUseCases: MainPageUseCasesType {
+    private let repository: MainPageRepositoryType
+    
+    init(repository: MainPageRepositoryType) {
+        self.repository = repository
+    }
+    
+    func getCharacters(load: PassthroughSubject<Void, Never>, limit: Int) -> AnyPublisher<[Character], Error> {
+        self.repository.fetchCharacters(load: load, limit: limit)
     }
 }

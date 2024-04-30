@@ -5,4 +5,8 @@
 //  Created by myung hoon on 30/04/2024.
 //
 
-import Foundation
+import Combine
+
+protocol MainPageRepositoryType {
+    func fetchCharacters(load: PassthroughSubject<Void, Never>, limit: Int) -> AnyPublisher<[Character], Error>
+}
