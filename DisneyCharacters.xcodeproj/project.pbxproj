@@ -11,9 +11,30 @@
 		A36F85582BE10EAB00B9D515 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85572BE10EAB00B9D515 /* ContentView.swift */; };
 		A36F855A2BE10EAE00B9D515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A36F85592BE10EAE00B9D515 /* Assets.xcassets */; };
 		A36F855D2BE10EAE00B9D515 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A36F855C2BE10EAE00B9D515 /* Preview Assets.xcassets */; };
-		A36F85672BE10EAF00B9D515 /* DisneyCharactersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85662BE10EAF00B9D515 /* DisneyCharactersTests.swift */; };
-		A36F85712BE10EAF00B9D515 /* DisneyCharactersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85702BE10EAF00B9D515 /* DisneyCharactersUITests.swift */; };
-		A36F85732BE10EAF00B9D515 /* DisneyCharactersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85722BE10EAF00B9D515 /* DisneyCharactersUITestsLaunchTests.swift */; };
+		A36F85882BE1281B00B9D515 /* MainPageRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85872BE1281B00B9D515 /* MainPageRepositoryType.swift */; };
+		A36F858A2BE1282D00B9D515 /* DetailPageRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85892BE1282D00B9D515 /* DetailPageRepositoryType.swift */; };
+		A36F858C2BE12AC100B9D515 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F858B2BE12AC100B9D515 /* Character.swift */; };
+		A36F858E2BE12BD600B9D515 /* MainPageUseCasesType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F858D2BE12BD600B9D515 /* MainPageUseCasesType.swift */; };
+		A36F85902BE12C3A00B9D515 /* DetailsPageUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F858F2BE12C3A00B9D515 /* DetailsPageUseCases.swift */; };
+		A36F85972BE12F0100B9D515 /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85962BE12F0100B9D515 /* DataTransferService.swift */; };
+		A36F85992BE12F1200B9D515 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85982BE12F1200B9D515 /* Endpoint.swift */; };
+		A36F859B2BE12F2F00B9D515 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F859A2BE12F2F00B9D515 /* HTTPMethod.swift */; };
+		A36F859D2BE12F4600B9D515 /* NetworkServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F859C2BE12F4600B9D515 /* NetworkServiceType.swift */; };
+		A36F859F2BE12F5A00B9D515 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F859E2BE12F5A00B9D515 /* NetworkService.swift */; };
+		A36F85A32BE12F9E00B9D515 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85A22BE12F9E00B9D515 /* Publisher+Extension.swift */; };
+		A36F85A52BE1306600B9D515 /* MainPageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85A42BE1306600B9D515 /* MainPageRepository.swift */; };
+		A36F85A82BE1310A00B9D515 /* MainPageEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85A72BE1310A00B9D515 /* MainPageEndpoint.swift */; };
+		A36F85AB2BE1315100B9D515 /* MainPageRepositoryPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85AA2BE1315100B9D515 /* MainPageRepositoryPageTests.swift */; };
+		A36F85AD2BE1319300B9D515 /* MainPageDataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85AC2BE1319300B9D515 /* MainPageDataTransferService.swift */; };
+		A36F85AF2BE1554200B9D515 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85AE2BE1554200B9D515 /* Response.swift */; };
+		A36F85B12BE1590F00B9D515 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85B02BE1590F00B9D515 /* API.swift */; };
+		A36F85B62BE15D7100B9D515 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85B52BE15D7100B9D515 /* MockData.swift */; };
+		A36F85B82BE15D8C00B9D515 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85B72BE15D8C00B9D515 /* NetworkServiceTests.swift */; };
+		A36F85BB2BE15E1600B9D515 /* MockMainPageEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85BA2BE15E1600B9D515 /* MockMainPageEndpoint.swift */; };
+		A36F85BD2BE15E3A00B9D515 /* URLProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85BC2BE15E3A00B9D515 /* URLProtocolMock.swift */; };
+		A36F85C12BE1630700B9D515 /* mockCharacterJson.json in Resources */ = {isa = PBXBuildFile; fileRef = A36F85B92BE15DBF00B9D515 /* mockCharacterJson.json */; };
+		A36F85CB2BE1661100B9D515 /* DisneyCharactersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85CA2BE1661100B9D515 /* DisneyCharactersUITests.swift */; };
+		A36F85CD2BE1661100B9D515 /* DisneyCharactersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F85CC2BE1661100B9D515 /* DisneyCharactersUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,7 +45,7 @@
 			remoteGlobalIDString = A36F85512BE10EAB00B9D515;
 			remoteInfo = DisneyCharacters;
 		};
-		A36F856D2BE10EAF00B9D515 /* PBXContainerItemProxy */ = {
+		A36F85CE2BE1661100B9D515 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A36F854A2BE10EAB00B9D515 /* Project object */;
 			proxyType = 1;
@@ -40,10 +61,31 @@
 		A36F85592BE10EAE00B9D515 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A36F855C2BE10EAE00B9D515 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A36F85622BE10EAF00B9D515 /* DisneyCharactersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DisneyCharactersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A36F85662BE10EAF00B9D515 /* DisneyCharactersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisneyCharactersTests.swift; sourceTree = "<group>"; };
-		A36F856C2BE10EAF00B9D515 /* DisneyCharactersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DisneyCharactersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A36F85702BE10EAF00B9D515 /* DisneyCharactersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisneyCharactersUITests.swift; sourceTree = "<group>"; };
-		A36F85722BE10EAF00B9D515 /* DisneyCharactersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisneyCharactersUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A36F85872BE1281B00B9D515 /* MainPageRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageRepositoryType.swift; sourceTree = "<group>"; };
+		A36F85892BE1282D00B9D515 /* DetailPageRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageRepositoryType.swift; sourceTree = "<group>"; };
+		A36F858B2BE12AC100B9D515 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		A36F858D2BE12BD600B9D515 /* MainPageUseCasesType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageUseCasesType.swift; sourceTree = "<group>"; };
+		A36F858F2BE12C3A00B9D515 /* DetailsPageUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPageUseCases.swift; sourceTree = "<group>"; };
+		A36F85962BE12F0100B9D515 /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
+		A36F85982BE12F1200B9D515 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		A36F859A2BE12F2F00B9D515 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		A36F859C2BE12F4600B9D515 /* NetworkServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceType.swift; sourceTree = "<group>"; };
+		A36F859E2BE12F5A00B9D515 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		A36F85A22BE12F9E00B9D515 /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
+		A36F85A42BE1306600B9D515 /* MainPageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageRepository.swift; sourceTree = "<group>"; };
+		A36F85A72BE1310A00B9D515 /* MainPageEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageEndpoint.swift; sourceTree = "<group>"; };
+		A36F85AA2BE1315100B9D515 /* MainPageRepositoryPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageRepositoryPageTests.swift; sourceTree = "<group>"; };
+		A36F85AC2BE1319300B9D515 /* MainPageDataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageDataTransferService.swift; sourceTree = "<group>"; };
+		A36F85AE2BE1554200B9D515 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		A36F85B02BE1590F00B9D515 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		A36F85B52BE15D7100B9D515 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		A36F85B72BE15D8C00B9D515 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		A36F85B92BE15DBF00B9D515 /* mockCharacterJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockCharacterJson.json; sourceTree = "<group>"; };
+		A36F85BA2BE15E1600B9D515 /* MockMainPageEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMainPageEndpoint.swift; sourceTree = "<group>"; };
+		A36F85BC2BE15E3A00B9D515 /* URLProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolMock.swift; sourceTree = "<group>"; };
+		A36F85C82BE1661100B9D515 /* DisneyCharactersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DisneyCharactersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A36F85CA2BE1661100B9D515 /* DisneyCharactersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisneyCharactersUITests.swift; sourceTree = "<group>"; };
+		A36F85CC2BE1661100B9D515 /* DisneyCharactersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisneyCharactersUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +103,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A36F85692BE10EAF00B9D515 /* Frameworks */ = {
+		A36F85C52BE1661100B9D515 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -76,7 +118,7 @@
 			children = (
 				A36F85542BE10EAB00B9D515 /* DisneyCharacters */,
 				A36F85652BE10EAF00B9D515 /* DisneyCharactersTests */,
-				A36F856F2BE10EAF00B9D515 /* DisneyCharactersUITests */,
+				A36F85C92BE1661100B9D515 /* DisneyCharactersUITests */,
 				A36F85532BE10EAB00B9D515 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,7 +128,7 @@
 			children = (
 				A36F85522BE10EAB00B9D515 /* DisneyCharacters.app */,
 				A36F85622BE10EAF00B9D515 /* DisneyCharactersTests.xctest */,
-				A36F856C2BE10EAF00B9D515 /* DisneyCharactersUITests.xctest */,
+				A36F85C82BE1661100B9D515 /* DisneyCharactersUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,6 +136,12 @@
 		A36F85542BE10EAB00B9D515 /* DisneyCharacters */ = {
 			isa = PBXGroup;
 			children = (
+				A36F85A02BE12F7600B9D515 /* Common */,
+				A36F85912BE12EA500B9D515 /* Setvices */,
+				A36F85822BE11FC800B9D515 /* Application */,
+				A36F85812BE11FC300B9D515 /* Data */,
+				A36F85802BE11FBB00B9D515 /* Presenter */,
+				A36F857F2BE11FB200B9D515 /* Domain */,
 				A36F85552BE10EAB00B9D515 /* DisneyCharactersApp.swift */,
 				A36F85572BE10EAB00B9D515 /* ContentView.swift */,
 				A36F85592BE10EAE00B9D515 /* Assets.xcassets */,
@@ -113,16 +161,175 @@
 		A36F85652BE10EAF00B9D515 /* DisneyCharactersTests */ = {
 			isa = PBXGroup;
 			children = (
-				A36F85662BE10EAF00B9D515 /* DisneyCharactersTests.swift */,
+				A36F85B22BE15CE400B9D515 /* Services */,
+				A36F85A92BE1314100B9D515 /* Data */,
 			);
 			path = DisneyCharactersTests;
 			sourceTree = "<group>";
 		};
-		A36F856F2BE10EAF00B9D515 /* DisneyCharactersUITests */ = {
+		A36F857F2BE11FB200B9D515 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				A36F85702BE10EAF00B9D515 /* DisneyCharactersUITests.swift */,
-				A36F85722BE10EAF00B9D515 /* DisneyCharactersUITestsLaunchTests.swift */,
+				A36F85852BE1201300B9D515 /* RepositoryInterfaces */,
+				A36F85842BE1200C00B9D515 /* UseCases */,
+				A36F85832BE11FE800B9D515 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A36F85802BE11FBB00B9D515 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A36F85812BE11FC300B9D515 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A36F85862BE1206D00B9D515 /*  Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A36F85822BE11FC800B9D515 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		A36F85832BE11FE800B9D515 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				A36F858B2BE12AC100B9D515 /* Character.swift */,
+				A36F85AE2BE1554200B9D515 /* Response.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		A36F85842BE1200C00B9D515 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				A36F858D2BE12BD600B9D515 /* MainPageUseCasesType.swift */,
+				A36F858F2BE12C3A00B9D515 /* DetailsPageUseCases.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		A36F85852BE1201300B9D515 /* RepositoryInterfaces */ = {
+			isa = PBXGroup;
+			children = (
+				A36F85872BE1281B00B9D515 /* MainPageRepositoryType.swift */,
+				A36F85892BE1282D00B9D515 /* DetailPageRepositoryType.swift */,
+			);
+			path = RepositoryInterfaces;
+			sourceTree = "<group>";
+		};
+		A36F85862BE1206D00B9D515 /*  Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				A36F85A42BE1306600B9D515 /* MainPageRepository.swift */,
+			);
+			path = " Repositories";
+			sourceTree = "<group>";
+		};
+		A36F85912BE12EA500B9D515 /* Setvices */ = {
+			isa = PBXGroup;
+			children = (
+				A36F85932BE12EBC00B9D515 /* NetworkService */,
+			);
+			path = Setvices;
+			sourceTree = "<group>";
+		};
+		A36F85922BE12EB200B9D515 /* DataTransferService */ = {
+			isa = PBXGroup;
+			children = (
+				A36F85962BE12F0100B9D515 /* DataTransferService.swift */,
+				A36F85AC2BE1319300B9D515 /* MainPageDataTransferService.swift */,
+			);
+			path = DataTransferService;
+			sourceTree = "<group>";
+		};
+		A36F85932BE12EBC00B9D515 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				A36F85922BE12EB200B9D515 /* DataTransferService */,
+				A36F85A62BE130F200B9D515 /* Endpoints */,
+				A36F859C2BE12F4600B9D515 /* NetworkServiceType.swift */,
+				A36F859E2BE12F5A00B9D515 /* NetworkService.swift */,
+				A36F859A2BE12F2F00B9D515 /* HTTPMethod.swift */,
+				A36F85B02BE1590F00B9D515 /* API.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		A36F85A02BE12F7600B9D515 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A36F85A12BE12F8000B9D515 /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A36F85A12BE12F8000B9D515 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A36F85A22BE12F9E00B9D515 /* Publisher+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A36F85A62BE130F200B9D515 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				A36F85982BE12F1200B9D515 /* Endpoint.swift */,
+				A36F85A72BE1310A00B9D515 /* MainPageEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		A36F85A92BE1314100B9D515 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A36F85AA2BE1315100B9D515 /* MainPageRepositoryPageTests.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A36F85B22BE15CE400B9D515 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A36F85B32BE15D3C00B9D515 /* NetworkService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A36F85B32BE15D3C00B9D515 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				A36F85B42BE15D5400B9D515 /* Mockups */,
+				A36F85B72BE15D8C00B9D515 /* NetworkServiceTests.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		A36F85B42BE15D5400B9D515 /* Mockups */ = {
+			isa = PBXGroup;
+			children = (
+				A36F85B52BE15D7100B9D515 /* MockData.swift */,
+				A36F85B92BE15DBF00B9D515 /* mockCharacterJson.json */,
+				A36F85BA2BE15E1600B9D515 /* MockMainPageEndpoint.swift */,
+				A36F85BC2BE15E3A00B9D515 /* URLProtocolMock.swift */,
+			);
+			path = Mockups;
+			sourceTree = "<group>";
+		};
+		A36F85C92BE1661100B9D515 /* DisneyCharactersUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A36F85CA2BE1661100B9D515 /* DisneyCharactersUITests.swift */,
+				A36F85CC2BE1661100B9D515 /* DisneyCharactersUITestsLaunchTests.swift */,
 			);
 			path = DisneyCharactersUITests;
 			sourceTree = "<group>";
@@ -165,22 +372,22 @@
 			productReference = A36F85622BE10EAF00B9D515 /* DisneyCharactersTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A36F856B2BE10EAF00B9D515 /* DisneyCharactersUITests */ = {
+		A36F85C72BE1661100B9D515 /* DisneyCharactersUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A36F857C2BE10EAF00B9D515 /* Build configuration list for PBXNativeTarget "DisneyCharactersUITests" */;
+			buildConfigurationList = A36F85D02BE1661100B9D515 /* Build configuration list for PBXNativeTarget "DisneyCharactersUITests" */;
 			buildPhases = (
-				A36F85682BE10EAF00B9D515 /* Sources */,
-				A36F85692BE10EAF00B9D515 /* Frameworks */,
-				A36F856A2BE10EAF00B9D515 /* Resources */,
+				A36F85C42BE1661100B9D515 /* Sources */,
+				A36F85C52BE1661100B9D515 /* Frameworks */,
+				A36F85C62BE1661100B9D515 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A36F856E2BE10EAF00B9D515 /* PBXTargetDependency */,
+				A36F85CF2BE1661100B9D515 /* PBXTargetDependency */,
 			);
 			name = DisneyCharactersUITests;
 			productName = DisneyCharactersUITests;
-			productReference = A36F856C2BE10EAF00B9D515 /* DisneyCharactersUITests.xctest */;
+			productReference = A36F85C82BE1661100B9D515 /* DisneyCharactersUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -200,7 +407,7 @@
 						CreatedOnToolsVersion = 14.3;
 						TestTargetID = A36F85512BE10EAB00B9D515;
 					};
-					A36F856B2BE10EAF00B9D515 = {
+					A36F85C72BE1661100B9D515 = {
 						CreatedOnToolsVersion = 14.3;
 						TestTargetID = A36F85512BE10EAB00B9D515;
 					};
@@ -221,7 +428,7 @@
 			targets = (
 				A36F85512BE10EAB00B9D515 /* DisneyCharacters */,
 				A36F85612BE10EAF00B9D515 /* DisneyCharactersTests */,
-				A36F856B2BE10EAF00B9D515 /* DisneyCharactersUITests */,
+				A36F85C72BE1661100B9D515 /* DisneyCharactersUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -240,10 +447,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A36F85C12BE1630700B9D515 /* mockCharacterJson.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A36F856A2BE10EAF00B9D515 /* Resources */ = {
+		A36F85C62BE1661100B9D515 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -257,8 +465,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A36F858E2BE12BD600B9D515 /* MainPageUseCasesType.swift in Sources */,
+				A36F85992BE12F1200B9D515 /* Endpoint.swift in Sources */,
+				A36F85A32BE12F9E00B9D515 /* Publisher+Extension.swift in Sources */,
+				A36F85AF2BE1554200B9D515 /* Response.swift in Sources */,
 				A36F85582BE10EAB00B9D515 /* ContentView.swift in Sources */,
+				A36F85A82BE1310A00B9D515 /* MainPageEndpoint.swift in Sources */,
+				A36F85882BE1281B00B9D515 /* MainPageRepositoryType.swift in Sources */,
+				A36F858C2BE12AC100B9D515 /* Character.swift in Sources */,
+				A36F85972BE12F0100B9D515 /* DataTransferService.swift in Sources */,
 				A36F85562BE10EAB00B9D515 /* DisneyCharactersApp.swift in Sources */,
+				A36F859D2BE12F4600B9D515 /* NetworkServiceType.swift in Sources */,
+				A36F85AD2BE1319300B9D515 /* MainPageDataTransferService.swift in Sources */,
+				A36F858A2BE1282D00B9D515 /* DetailPageRepositoryType.swift in Sources */,
+				A36F859B2BE12F2F00B9D515 /* HTTPMethod.swift in Sources */,
+				A36F85A52BE1306600B9D515 /* MainPageRepository.swift in Sources */,
+				A36F859F2BE12F5A00B9D515 /* NetworkService.swift in Sources */,
+				A36F85B12BE1590F00B9D515 /* API.swift in Sources */,
+				A36F85902BE12C3A00B9D515 /* DetailsPageUseCases.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,16 +490,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A36F85672BE10EAF00B9D515 /* DisneyCharactersTests.swift in Sources */,
+				A36F85BD2BE15E3A00B9D515 /* URLProtocolMock.swift in Sources */,
+				A36F85AB2BE1315100B9D515 /* MainPageRepositoryPageTests.swift in Sources */,
+				A36F85B82BE15D8C00B9D515 /* NetworkServiceTests.swift in Sources */,
+				A36F85BB2BE15E1600B9D515 /* MockMainPageEndpoint.swift in Sources */,
+				A36F85B62BE15D7100B9D515 /* MockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A36F85682BE10EAF00B9D515 /* Sources */ = {
+		A36F85C42BE1661100B9D515 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A36F85732BE10EAF00B9D515 /* DisneyCharactersUITestsLaunchTests.swift in Sources */,
-				A36F85712BE10EAF00B9D515 /* DisneyCharactersUITests.swift in Sources */,
+				A36F85CD2BE1661100B9D515 /* DisneyCharactersUITestsLaunchTests.swift in Sources */,
+				A36F85CB2BE1661100B9D515 /* DisneyCharactersUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,10 +515,10 @@
 			target = A36F85512BE10EAB00B9D515 /* DisneyCharacters */;
 			targetProxy = A36F85632BE10EAF00B9D515 /* PBXContainerItemProxy */;
 		};
-		A36F856E2BE10EAF00B9D515 /* PBXTargetDependency */ = {
+		A36F85CF2BE1661100B9D515 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A36F85512BE10EAB00B9D515 /* DisneyCharacters */;
-			targetProxy = A36F856D2BE10EAF00B9D515 /* PBXContainerItemProxy */;
+			targetProxy = A36F85CE2BE1661100B9D515 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -507,10 +735,9 @@
 			};
 			name = Release;
 		};
-		A36F857D2BE10EAF00B9D515 /* Debug */ = {
+		A36F85D12BE1661100B9D515 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6F36WQVB42;
@@ -525,10 +752,9 @@
 			};
 			name = Debug;
 		};
-		A36F857E2BE10EAF00B9D515 /* Release */ = {
+		A36F85D22BE1661100B9D515 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6F36WQVB42;
@@ -573,11 +799,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A36F857C2BE10EAF00B9D515 /* Build configuration list for PBXNativeTarget "DisneyCharactersUITests" */ = {
+		A36F85D02BE1661100B9D515 /* Build configuration list for PBXNativeTarget "DisneyCharactersUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A36F857D2BE10EAF00B9D515 /* Debug */,
-				A36F857E2BE10EAF00B9D515 /* Release */,
+				A36F85D12BE1661100B9D515 /* Debug */,
+				A36F85D22BE1661100B9D515 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
