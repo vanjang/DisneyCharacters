@@ -8,7 +8,7 @@
 import Foundation
 
 struct MainPageEndopoint: Endpoint {
-    var baseURL: String
+    var baseURL: String { API.baseUrlString }
     var path: String
     var method: HTTPMethod
     var parameters: [URLQueryItem]?
