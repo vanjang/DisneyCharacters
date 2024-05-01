@@ -7,12 +7,15 @@
 
 import Combine
 
+/// A protocol defining data transfer service types.
 protocol DataTransferService {
-    func request<T: Decodable>() -> AnyPublisher<T, Error>
+    /// Defining request for local data.
+    func request<T>() -> AnyPublisher<T, Error>
+    /// Defining request for network data.
     func request<T: Decodable>(endpoint: Endpoint) -> AnyPublisher<T, Error>
 }
 
 extension DataTransferService {
-    func request<T: Decodable>() -> AnyPublisher<T, Error> { Empty().eraseToAnyPublisher() }
+    func request<T>() -> AnyPublisher<T, Error> { Empty().eraseToAnyPublisher() }
     func request<T: Decodable>(endpoint: Endpoint) -> AnyPublisher<T, Error> { Empty().eraseToAnyPublisher() }
 }

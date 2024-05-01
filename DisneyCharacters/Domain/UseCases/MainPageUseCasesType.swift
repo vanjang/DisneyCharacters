@@ -9,6 +9,7 @@ import Combine
 
 protocol MainPageUseCasesType {
     func getCharacters(load: PassthroughSubject<Void, Never>, limit: Int) -> AnyPublisher<[Character], Error>
+    func getFavoriteCharacterIds() -> AnyPublisher<[Int], Error>
 }
 
 final class MainPageUseCases: MainPageUseCasesType {
@@ -20,5 +21,9 @@ final class MainPageUseCases: MainPageUseCasesType {
     
     func getCharacters(load: PassthroughSubject<Void, Never>, limit: Int) -> AnyPublisher<[Character], Error> {
         self.repository.fetchCharacters(load: load, limit: limit)
+    }
+    
+    func getFavoriteCharacterIds() -> AnyPublisher<[Int], Error> {
+        repository.fetchFavoriteCharacterIds()
     }
 }

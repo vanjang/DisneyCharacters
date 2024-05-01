@@ -15,8 +15,9 @@ final class MainPageRepositoryTests: XCTestCase {
     
     func testMainPagePagination() throws {
         // GIVEN
-        let apiDataTransferService = MainPageDataTransferService(networkService: NetworkService())
-        let repo = MainPageRepository(apiDataTransferService: apiDataTransferService)
+        let apiDataTransferService = NetworkDataTransferService(networkService: NetworkService())
+        let localDataTransferService = LocalDataTransferService(localService: LocalDataService())
+        let repo = MainPageRepository(apiDataTransferService: apiDataTransferService, localDataTransferService: localDataTransferService)
         let loadNext = PassthroughSubject<Void, Never>()
         let expectation = expectation(description: "pagination")
         var characters: [Character] = []

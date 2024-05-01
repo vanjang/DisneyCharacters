@@ -9,4 +9,5 @@ import Combine
 
 protocol MainPageRepositoryType {
     func fetchCharacters(load: PassthroughSubject<Void, Never>, limit: Int) -> AnyPublisher<[Character], Error>
+    func fetchFavoriteCharacterIds() -> AnyPublisher<[Int], Error>
 }

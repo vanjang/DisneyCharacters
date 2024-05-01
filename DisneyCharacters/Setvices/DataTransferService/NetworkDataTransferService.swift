@@ -1,5 +1,5 @@
 //
-//  MainPageDataTransferService.swift
+//  NetworkDataTransferService.swift
 //  DisneyCharacters
 //
 //  Created by myung hoon on 30/04/2024.
@@ -7,7 +7,7 @@
 
 import Combine
 
-final class MainPageDataTransferService {
+final class NetworkDataTransferService {
     private let networkService: NetworkServiceType
     
     init(networkService: NetworkServiceType) {
@@ -15,7 +15,7 @@ final class MainPageDataTransferService {
     }
 }
 
-extension MainPageDataTransferService: DataTransferService {
+extension NetworkDataTransferService: DataTransferService {
     func request<T: Decodable>(endpoint: Endpoint) -> AnyPublisher<T, Error> {
         networkService.request(endpoint).eraseToAnyPublisher()
     }
