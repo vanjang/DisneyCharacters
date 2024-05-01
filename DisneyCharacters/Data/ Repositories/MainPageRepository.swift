@@ -10,9 +10,11 @@ import Combine
 
 final class MainPageRepository {
     private let apiDataTransferService: DataTransferService
+    private let localDataTransferService: DataTransferService
     
-    init(apiDataTransferService: DataTransferService) {
+    init(apiDataTransferService: DataTransferService, localDataTransferService: DataTransferService) {
         self.apiDataTransferService = apiDataTransferService
+        self.localDataTransferService = localDataTransferService
     }
 }
 
@@ -26,11 +28,15 @@ extension MainPageRepository: MainPageRepositoryType {
                                                   URLQueryItem(name: API.Queries.pageSize.rawValue, value: "\(paginationItem.limit)")]
                 return MainPageEndopoint(path: API.Paths.character.rawValue, method: .get, parameters: queryItems)
             }
-            .flatMapLatest { [unowned self] endpoint in
-                let characters: AnyPublisher<Response<[Character]>, Error> = self.apiDataTransferService.request(endpoint: endpoint)
-                return characters.map { $0.data }
+            .flatMap { [unowned self] endpoint in
+                let response: AnyPublisher<Response<[Character]>, Error> = self.apiDataTransferService.request(endpoint: endpoint)
+                return response.map { $0.data }
             }
             .scan([Character](), { $0 + $1 })
             .eraseToAnyPublisher()
+    }
+    
+    func fetchFavoriteCharacterIds() -> AnyPublisher<[Int], Error> {
+        localDataTransferService.request().eraseToAnyPublisher()
     }
 }
