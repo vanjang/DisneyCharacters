@@ -6,34 +6,63 @@
 //
 
 import XCTest
+import Combine
 @testable import DisneyCharacters
 
-final class LocalDataServiceTests: XCTestCase {
-    
-    var localDataService: LocalDataServiceType!
-    
-    override func setUp() {
-        super.setUp()
-        localDataService = LocalDataService()
-    }
+class LocalDataServiceTests: XCTestCase {
+    var cancellables = Set<AnyCancellable>()
+    let localDataService: LocalDataServiceType = LocalDataService()
     
     override func tearDown() {
-        localDataService = nil
         super.tearDown()
+        cancellables.removeAll()
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.favoriteCharacterKey)
     }
     
-    func testAddFavoriteCharacter() {
-        let idToAdd = 1234567890
-        localDataService.addFavoriteCharacter(id: idToAdd)
-        XCTAssertTrue(localDataService.favoriteCharacterIds.contains(idToAdd))
-    }
-    
-    func testRemoveFavoriteCharacter() {
-        let idToRemove = 0987654321
-        localDataService.addFavoriteCharacter(id: idToRemove)
-        XCTAssertTrue(localDataService.favoriteCharacterIds.contains(idToRemove))
+    func testGetData() throws {
+        let testValue = [0, 1, 2]
+        UserDefaults.standard.set(testValue, forKey: UserDefaultsKey.favoriteCharacterKey)
         
-        localDataService.removeFavoriteCharacter(id: idToRemove)
-        XCTAssertFalse(localDataService.favoriteCharacterIds.contains(idToRemove))
+        let expectation = XCTestExpectation(description: "testGetData")
+        
+        localDataService.getData(key: UserDefaultsKey.favoriteCharacterKey)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    XCTFail("Received error: \(error)")
+                }
+            }, receiveValue: { value in
+                XCTAssertEqual(value, testValue)
+                expectation.fulfill()
+            })
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 1)
+    }
+    
+    func testUpdateData() throws {
+        let testValue = [0, 1, 2]
+        
+        let expectation = XCTestExpectation(description: "testUpdateData")
+        
+        localDataService.update(data: testValue, key: UserDefaultsKey.favoriteCharacterKey)
+        
+        localDataService.getData(key: UserDefaultsKey.favoriteCharacterKey)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    XCTFail("Received error: \(error)")
+                }
+            }, receiveValue: { value in
+                XCTAssertEqual(value, testValue)
+                expectation.fulfill()
+            })
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 1)
     }
 }
