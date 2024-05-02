@@ -9,8 +9,8 @@ import Foundation
 
 struct AppDependencyContainer {
     func makeAppDependenciesContainer() -> DependencyContainer {
-        let dependencies = DependencyContainer.Dependencies(apiDataTransferService: NetworkDataTransferService(networkService: NetworkService()),
-                                                            localDataTransferService: LocalDataTransferService(localService: LocalDataService()))
-        return DependencyContainer(dependencies: dependencies)
+        let services = DependencyContainer.DataTransferServices(apiDataTransferService: NetworkDataTransferService(networkService: NetworkService()),
+                                                                localDataTransferService: LocalDataTransferService(localService: LocalDataService()))
+        return DependencyContainer(dataTransferServices: services)
     }
 }

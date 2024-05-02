@@ -8,23 +8,23 @@
 import Foundation
 
 class DependencyContainer: ObservableObject {
-    struct Dependencies {
+    struct DataTransferServices {
         let apiDataTransferService: DataTransferServiceType
         let localDataTransferService: DataTransferServiceType
     }
     
-    private let dependencies: Dependencies
+    private let dataTransferServices: DataTransferServices
     
-    init(dependencies: Dependencies) {
-        self.dependencies = dependencies
+    init(dataTransferServices: DataTransferServices) {
+        self.dataTransferServices = dataTransferServices
     }
 }
 
 // MARK: - Main page dependencies
 extension DependencyContainer {
     func mainPageRepository() -> MainPageRepositoryType {
-        MainPageRepository(apiDataTransferService: dependencies.apiDataTransferService,
-                           localDataTransferService: dependencies.localDataTransferService)
+        MainPageRepository(apiDataTransferService: dataTransferServices.apiDataTransferService,
+                           localDataTransferService: dataTransferServices.localDataTransferService)
     }
     
     func mainPageUseCases() -> MainPageUseCasesType {
@@ -43,8 +43,8 @@ extension DependencyContainer {
 // MARK: - Detail page dependencies
 extension DependencyContainer {
     func detailPageRepository() -> DetailPageRepositoryType {
-        DetailPageRepository(apiDataTransferService: dependencies.apiDataTransferService,
-                             localDataTransferService: dependencies.localDataTransferService)
+        DetailPageRepository(apiDataTransferService: dataTransferServices.apiDataTransferService,
+                             localDataTransferService: dataTransferServices.localDataTransferService)
     }
     
     func detailPageUseCases() -> DetailPageUseCasesType {

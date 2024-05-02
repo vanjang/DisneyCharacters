@@ -66,6 +66,7 @@
 		A3CF3F3E2BE42FB700D47A74 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CF3F3D2BE42FB700D47A74 /* ImageCache.swift */; };
 		A3CF3F402BE4453400D47A74 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CF3F3F2BE4453400D47A74 /* SortType.swift */; };
 		A3CF3F422BE4475900D47A74 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A3CF3F412BE4475800D47A74 /* .gitignore */; };
+		A3CF3F442BE45A9800D47A74 /* LocalDataServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CF3F432BE45A9800D47A74 /* LocalDataServiceType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		A3CF3F3D2BE42FB700D47A74 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		A3CF3F3F2BE4453400D47A74 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 		A3CF3F412BE4475800D47A74 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		A3CF3F432BE45A9800D47A74 /* LocalDataServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataServiceType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -502,6 +504,7 @@
 		A3CF3F262BE3705E00D47A74 /* LocalDataService */ = {
 			isa = PBXGroup;
 			children = (
+				A3CF3F432BE45A9800D47A74 /* LocalDataServiceType.swift */,
 				A36F85EA2BE1A9C100B9D515 /* LocalDataService.swift */,
 			);
 			path = LocalDataService;
@@ -692,6 +695,7 @@
 				A3CF3F2E2BE3D6BA00D47A74 /* CustomError.swift in Sources */,
 				A3CF3F392BE40EAF00D47A74 /* RemoteImageView.swift in Sources */,
 				A349284C2BE25BDC00510603 /* DetailPageViewModel.swift in Sources */,
+				A3CF3F442BE45A9800D47A74 /* LocalDataServiceType.swift in Sources */,
 				A36F85E92BE1A7EF00B9D515 /* LocalDataTransferService.swift in Sources */,
 				A36F85B12BE1590F00B9D515 /* API.swift in Sources */,
 				A34928572BE25D6D00510603 /* LoadingView.swift in Sources */,
