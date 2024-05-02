@@ -40,6 +40,7 @@ final class MainPageViewModel: ObservableObject {
         Publishers.CombineLatest(characters, favoriteIds)
             .map (createItem)
             .replaceError(with: nil)
+            .receive(on: DispatchQueue.main)
             .assignNoRetain(to: \.listItem, on: self)
             .store(in: &cancellables)
     }
@@ -50,6 +51,7 @@ final class MainPageViewModel: ObservableObject {
                             .map { _ in false }
                             .replaceError(with: false)
                             .throttle(for: 1, scheduler: DispatchQueue.main, latest: true))
+        .receive(on: DispatchQueue.main)
         .assignNoRetain(to: \.isLoading, on: self)
         .store(in: &cancellables)
     }

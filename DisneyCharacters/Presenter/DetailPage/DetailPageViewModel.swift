@@ -47,6 +47,7 @@ final class DetailPageViewModel: ObservableObject {
                 self?.error = .general(e)
                 return .empty()
             }
+            .receive(on: DispatchQueue.main)
             .assignNoRetain(to: \.item, on: self)
             .store(in: &cancellables)
     }
