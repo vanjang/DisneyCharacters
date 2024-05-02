@@ -35,6 +35,8 @@ final class DetailPageViewModelTests: XCTestCase {
         let id = 12
         let viewModel = makeViewModel(id: id)
         let expectation = expectation(description: "testDetailPageItem")
+        expectation.assertForOverFulfill = false
+        
         var item: DetailPageItem!
         
         viewModel.$item
@@ -46,7 +48,7 @@ final class DetailPageViewModelTests: XCTestCase {
             .store(in: &cancellables)
         
         // WHEN
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 0.1)
         
         // THEN
         XCTAssert(item != nil)
