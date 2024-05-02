@@ -5,6 +5,7 @@ This app displays Disney characters retrieved from [Disney dev API](https://disn
 1. Main Features
 - Favorite Character: You can add or remove your favorite character by clicking on the button in the detail page. Your favorites persist, and you can always see them whenever you return to the app.
 - Sorting: Click on the sort button in the top right corner to sort characters by the number of short films or films.
+- Pagination: Pages are loaded as you scroll.
 
 
 

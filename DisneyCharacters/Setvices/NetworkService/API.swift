@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// An API components such as base url, path, and query keys.
 enum API {
     static var baseUrlString: String { "https://api.disneyapi.dev" }
     

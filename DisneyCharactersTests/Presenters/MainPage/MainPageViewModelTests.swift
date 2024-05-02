@@ -104,9 +104,9 @@ final class MainPageViewModelTests: XCTestCase {
         
         if let sorted = viewModel.listItem?.characters {
             // THEN
-            XCTAssertFalse(sorted.isEmpty, "Sorted items array should not be empty")
-            XCTAssertEqual(sorted.first?.id, items.first?.id, "First item after sorting should match")
-            XCTAssertEqual(sorted.last?.id, items.last?.id, "Last item after sorting should match")
+            XCTAssertFalse(sorted.isEmpty)
+            XCTAssertEqual(sorted.first?.id, items.first?.id)
+            XCTAssertEqual(sorted.last?.id, items.last?.id)
         }
     }
     

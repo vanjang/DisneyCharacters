@@ -14,6 +14,7 @@ struct UserDefaultsKey {
 
 extension UserDefaults {
     func publisher<T>(for key: String) -> AnyPublisher<T, Error> {
+        // Emit its data when 1) it's first subscribed, 2) its data has changed.
         Publishers.Merge(Just(UserDefaults.standard.value(forKey: key) as? T).compactMap { $0 },
                          NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)
                             .compactMap { notification in
