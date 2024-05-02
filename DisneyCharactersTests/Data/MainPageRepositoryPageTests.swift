@@ -19,7 +19,7 @@ final class MainPageRepositoryTests: XCTestCase {
         let localDataTransferService = LocalDataTransferService(localService: LocalDataService())
         let repo = MainPageRepository(apiDataTransferService: apiDataTransferService, localDataTransferService: localDataTransferService)
         let loadNext = PassthroughSubject<Void, Never>()
-        let expectation = expectation(description: "pagination")
+        let expectation = expectation(description: "testMainPagePagination")
         var characters: [Character] = []
         var numberOfLoads = 0
         let limit: Int = 5

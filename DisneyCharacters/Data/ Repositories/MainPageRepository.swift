@@ -9,10 +9,10 @@ import Foundation
 import Combine
 
 final class MainPageRepository {
-    private let apiDataTransferService: DataTransferService
-    private let localDataTransferService: DataTransferService
+    private let apiDataTransferService: DataTransferServiceType
+    private let localDataTransferService: DataTransferServiceType
     
-    init(apiDataTransferService: DataTransferService, localDataTransferService: DataTransferService) {
+    init(apiDataTransferService: DataTransferServiceType, localDataTransferService: DataTransferServiceType) {
         self.apiDataTransferService = apiDataTransferService
         self.localDataTransferService = localDataTransferService
     }
@@ -23,10 +23,10 @@ extension MainPageRepository: MainPageRepositoryType {
         load
             .paginate(limit: limit)
             .setFailureType(to: Error.self)
-            .map { paginationItem -> MainPageEndopoint in
+            .map { paginationItem -> DisneyAPIEndopoint in
                 let queryItems: [URLQueryItem] = [URLQueryItem(name: API.Queries.page.rawValue, value: "\(paginationItem.offset)"),
                                                   URLQueryItem(name: API.Queries.pageSize.rawValue, value: "\(paginationItem.limit)")]
-                return MainPageEndopoint(path: API.Paths.character.rawValue, method: .get, parameters: queryItems)
+                return DisneyAPIEndopoint(path: API.Paths.character.rawValue, method: .get, parameters: queryItems)
             }
             .flatMap { [unowned self] endpoint in
                 let response: AnyPublisher<Response<[Character]>, Error> = self.apiDataTransferService.request(endpoint: endpoint)
@@ -36,7 +36,7 @@ extension MainPageRepository: MainPageRepositoryType {
             .eraseToAnyPublisher()
     }
     
-    func fetchFavoriteCharacterIds() -> AnyPublisher<[Int], Error> {
-        localDataTransferService.request().eraseToAnyPublisher()
+    func fetchFavoriteCharacterIds(key: String) -> AnyPublisher<[Int], Error> {
+        localDataTransferService.getUserDefaultsData(key: key)
     }
 }
