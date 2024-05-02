@@ -16,6 +16,7 @@ This app displays Disney characters retrieved from [Disney dev API](https://disn
 - MVVM
 - Unit testing
 - No external libraries in use
+- Deployment target iOS 16.4
 
 
 
