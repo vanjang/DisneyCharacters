@@ -41,7 +41,7 @@ final class DetailPageViewModel: ObservableObject {
     private func bindDetailPageItem() {
         Publishers.CombineLatest(character, favoriteIds)
             .map { (character, favoriteIds) -> DetailPageItem? in
-                DetailPageItem(id: character.id,title: character.name, imageUrl: character.imageUrl, isFavorite: favoriteIds.contains(character.id))
+                DetailPageItem(id: character.id,title: character.name, imageUrl: URL(string: character.imageUrl ?? ""), isFavorite: favoriteIds.contains(character.id))
             }
             .catch { [weak self] e -> AnyPublisher<DetailPageItem?, Never> in
                 self?.error = .general(e)

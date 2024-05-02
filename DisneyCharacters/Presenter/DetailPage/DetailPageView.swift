@@ -14,13 +14,17 @@ struct DetailPageView: View {
     
     var body: some View {
         ZStack {
-            VStack(spacing: 30) {
-                Image(systemName: "xmark")
+            VStack(spacing: 50) {
+                RemoteImageView(url: viewModel.item?.imageUrl, isCircle: false)
+                    .frame(height: 200)
                 
                 Button((viewModel.item?.isFavorite ?? false) ? "Remove from favorites" : "Add to favorites") {
                     viewModel.didTapButton.send(())
                 }
+                
+                Spacer()
             }
+            .padding()
             
             if viewModel.isLoading {
                 LoadingView()

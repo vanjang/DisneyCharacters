@@ -10,6 +10,6 @@ import Foundation
 struct DetailPageItem {
     let id: Int
     let title: String
-    let imageUrl: String?
+    let imageUrl: URL?
     let isFavorite: Bool
 }
