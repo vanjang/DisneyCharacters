@@ -65,6 +65,7 @@
 		A3CF3F392BE40EAF00D47A74 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CF3F382BE40EAF00D47A74 /* RemoteImageView.swift */; };
 		A3CF3F3C2BE42F7400D47A74 /* ImageCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CF3F3B2BE42F7400D47A74 /* ImageCacheTests.swift */; };
 		A3CF3F3E2BE42FB700D47A74 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CF3F3D2BE42FB700D47A74 /* ImageCache.swift */; };
+		A3CF3F402BE4453400D47A74 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CF3F3F2BE4453400D47A74 /* SortType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +147,7 @@
 		A3CF3F382BE40EAF00D47A74 /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 		A3CF3F3B2BE42F7400D47A74 /* ImageCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheTests.swift; sourceTree = "<group>"; };
 		A3CF3F3D2BE42FB700D47A74 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		A3CF3F3F2BE4453400D47A74 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -459,6 +461,7 @@
 				A349285C2BE25E0900510603 /* OrthogonalListView.swift */,
 				A3CF3F342BE3FBEC00D47A74 /* MainPageListCell.swift */,
 				A3CF3F362BE3FC1800D47A74 /* MainPageFavoriteCell.swift */,
+				A3CF3F3F2BE4453400D47A74 /* SortType.swift */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				A36F85562BE10EAB00B9D515 /* DisneyCharactersApp.swift in Sources */,
 				A34928592BE25D7600510603 /* EmptyView.swift in Sources */,
 				A36F859D2BE12F4600B9D515 /* NetworkServiceType.swift in Sources */,
+				A3CF3F402BE4453400D47A74 /* SortType.swift in Sources */,
 				A36F85AD2BE1319300B9D515 /* NetworkDataTransferService.swift in Sources */,
 				A36F858A2BE1282D00B9D515 /* DetailPageRepositoryType.swift in Sources */,
 				A36F859B2BE12F2F00B9D515 /* HTTPMethod.swift in Sources */,

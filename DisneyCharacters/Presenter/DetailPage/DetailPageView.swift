@@ -15,8 +15,7 @@ struct DetailPageView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 50) {
-                RemoteImageView(url: viewModel.item?.imageUrl, isCircle: false)
-                    .frame(height: 200)
+                RemoteImageView(url: viewModel.item?.imageUrl, isCircle: false, contentMode: .fit)
                 
                 Button((viewModel.item?.isFavorite ?? false) ? "Remove from favorites" : "Add to favorites") {
                     viewModel.didTapButton.send(())

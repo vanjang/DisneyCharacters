@@ -10,32 +10,37 @@ import SwiftUI
 struct RemoteImageView: View {
     let url: URL?
     let isCircle: Bool
+    let contentMode: ContentMode
     
     @State private var image: UIImage?
-    @State private var errors: String?
 
-    init(url: URL?, isCircle: Bool) {
+    init(url: URL?, isCircle: Bool, contentMode: ContentMode = .fill) {
         self.url = url
         self.isCircle = isCircle
+        self.contentMode = contentMode
         
         loadImage()
     }
 
     var body: some View {
-        VStack {
-            if let image = image {
-                Image(uiImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .clipShape(isCircle ? AnyShape(Circle()) : AnyShape(RoundedRectangle(cornerRadius: 8)))
-            } else {
-                AsyncImage(url: url) { image in
-                    image
+        GeometryReader { geo in
+            VStack {
+                if let image = image {
+                    Image(uiImage: image)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .aspectRatio(contentMode: contentMode)
+                        .frame(width: geo.size.width)
                         .clipShape(isCircle ? AnyShape(Circle()) : AnyShape(RoundedRectangle(cornerRadius: 8)))
-                } placeholder: {
-                    ProgressView()
+                } else {
+                    AsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: contentMode)
+                            .frame(width: geo.size.width)
+                            .clipShape(isCircle ? AnyShape(Circle()) : AnyShape(RoundedRectangle(cornerRadius: 8)))
+                    } placeholder: {
+                        ProgressView()
+                    }
                 }
             }
         }
