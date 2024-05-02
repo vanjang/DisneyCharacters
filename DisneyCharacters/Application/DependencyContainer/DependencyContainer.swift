@@ -9,8 +9,8 @@ import Foundation
 
 class DependencyContainer: ObservableObject {
     struct Dependencies {
-        let apiDataTransferService: DataTransferService
-        let localDataTransferService: DataTransferService
+        let apiDataTransferService: DataTransferServiceType
+        let localDataTransferService: DataTransferServiceType
     }
     
     private let dependencies: Dependencies
@@ -20,21 +20,42 @@ class DependencyContainer: ObservableObject {
     }
 }
 
+// MARK: - Main page dependencies
 extension DependencyContainer {
-    var mainPageRepository: MainPageRepositoryType {
+    func mainPageRepository() -> MainPageRepositoryType {
         MainPageRepository(apiDataTransferService: dependencies.apiDataTransferService,
                            localDataTransferService: dependencies.localDataTransferService)
     }
     
-    var mainPageUseCases: MainPageUseCasesType {
-        MainPageUseCases(repository: mainPageRepository)
+    func mainPageUseCases() -> MainPageUseCasesType {
+        MainPageUseCases(repository: mainPageRepository())
     }
     
-    var mainPageViewModel: MainPageViewModel {
-        MainPageViewModel(useCases: mainPageUseCases)
+    func mainPageViewModel() -> MainPageViewModel {
+        MainPageViewModel(useCases: mainPageUseCases())
     }
     
-    var mainPageView: MainPageView {
-        MainPageView(viewModel: mainPageViewModel)
+    func mainPageView() -> MainPageView {
+        MainPageView(viewModel: mainPageViewModel())
+    }
+}
+
+// MARK: - Detail page dependencies
+extension DependencyContainer {
+    func detailPageRepository() -> DetailPageRepositoryType {
+        DetailPageRepository(apiDataTransferService: dependencies.apiDataTransferService,
+                             localDataTransferService: dependencies.localDataTransferService)
+    }
+    
+    func detailPageUseCases() -> DetailPageUseCasesType {
+        DetailPageUseCases(repository: detailPageRepository())
+    }
+    
+    func detailPageViewModel(id: Int) -> DetailPageViewModel {
+        DetailPageViewModel(id: id, useCases: detailPageUseCases())
+    }
+    
+    func detailPageView(id: Int) -> DetailPageView {
+        DetailPageView(viewModel: detailPageViewModel(id: id))
     }
 }

@@ -16,7 +16,7 @@ struct DisneyCharactersApp: App {
     
     var body: some Scene {
         WindowGroup {
-            dependencies.mainPageView
+            dependencies.mainPageView()
                 .environmentObject(dependencies)
         }
     }
