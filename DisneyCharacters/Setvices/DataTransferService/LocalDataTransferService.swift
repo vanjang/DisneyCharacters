@@ -15,10 +15,12 @@ final class LocalDataTransferService {
     }
 }
 
-extension LocalDataTransferService: DataTransferService {
-    func request<T>() -> AnyPublisher<T, Error> {
-        Just(localService.favoriteCharacterIds as! T)
-            .setFailureType(to: Error.self)
-            .eraseToAnyPublisher()
+extension LocalDataTransferService: DataTransferServiceType {
+    func getUserDefaultsData<T>(key: String) -> AnyPublisher<T, Error> {
+        localService.getData(key: key)
+    }
+    
+    func updateUserDefaultsData<T>(data: T, key: String) {
+        localService.update(data: data, key: key)
     }
 }

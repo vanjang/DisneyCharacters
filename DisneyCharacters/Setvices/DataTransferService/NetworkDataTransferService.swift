@@ -15,7 +15,7 @@ final class NetworkDataTransferService {
     }
 }
 
-extension NetworkDataTransferService: DataTransferService {
+extension NetworkDataTransferService: DataTransferServiceType {
     func request<T: Decodable>(endpoint: Endpoint) -> AnyPublisher<T, Error> {
         networkService.request(endpoint).eraseToAnyPublisher()
     }
