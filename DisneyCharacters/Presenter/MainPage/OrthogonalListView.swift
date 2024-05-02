@@ -14,53 +14,72 @@ struct OrthogonalListView: View {
 
     // MARK: - Enviroment
     @EnvironmentObject private var dependencies: DependencyContainer
-    
+    @Environment(\.horizontalViewHeight) var horizontalViewHeight
+
     // MARK: - States
     @State private var bottomReached = false
-    
+
     var body: some View {
-        VStack {
-            // Horizontal view for favorite characters
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 20) {
-                    ForEach(viewItem.favorites) { item in
-                        NavigationLink {
-                            LazyView(dependencies.detailPageView(id: item.id))
-                        } label: {
-                            Text(item.title)
-                                .frame(width: 100, height: 100)
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                        }
-                    }
-                }
+        List {
+            Section("Your favorites") {
+                horizontalView
             }
-            .padding(.vertical, 16)
-            .frame(height: viewItem.isFavoritesHidden ? 0 : 100)
-            
-            // Vertical view for all characters
-            List(viewItem.characters, id: \.id) { item in
-                NavigationLink {
-                    LazyView(dependencies.detailPageView(id: item.id))
-                } label: {
-                    Text(item.title)
-                        .frame(height: 100)
-                }
-                .onAppear {
-                    if item.id == viewItem.characters.last?.id {
-                        bottomReached = true
-                    }
-                }
+
+            Section("All characters") {
+                verticalView
             }
-            .listStyle(PlainListStyle())
         }
+        .listStyle(GroupedListStyle())
         .onChange(of: bottomReached) { bottom in
             if bottom {
                 bottomReached = false
                 bottomReach()
             }
         }
+    }
+
+    @ViewBuilder
+    var horizontalView: some View {
+        if viewItem.favorites.isEmpty {
+            Text("It's empty.")
+                .foregroundColor(.gray)
+                .padding(.horizontal, 12)
+                .frame(maxWidth: .infinity)
+
+        } else {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    ForEach(viewItem.favorites) { item in
+                        NavigationLink {
+                            LazyView(dependencies.detailPageView(id: item.id))
+                        } label: {
+                            MainPageFavoriteCell(item: item)
+                                .frame(width: horizontalViewHeight * 0.8, height: horizontalViewHeight * 0.8)
+                        }
+                    }
+                }
+            }
+            .listRowSeparator(.hidden)
+            .frame(height: viewItem.isFavoritesHidden ? 40 : horizontalViewHeight)
+        }
+    }
+
+    @ViewBuilder
+    var verticalView: some View {
+        ForEach(viewItem.characters, id: \.id) { item in
+            NavigationLink {
+                LazyView(dependencies.detailPageView(id: item.id))
+            } label: {
+                MainPageListCell(item: item)
+                    .frame(height: 100)
+            }
+            .onAppear {
+                if item.id == viewItem.characters.last?.id {
+                    bottomReached = true
+                }
+            }
+        }
+        .listRowSeparator(.hidden)
     }
 }
 
