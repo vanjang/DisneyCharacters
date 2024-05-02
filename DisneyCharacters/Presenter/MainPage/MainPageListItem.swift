@@ -11,7 +11,7 @@ struct MainPageListItem: Identifiable {
     let id: Int
     let isFavorite: Bool
     let title: String
-    let imageUrl: String?
+    let imageUrl: URL?
 }
 
 struct MainPageListViewItem {

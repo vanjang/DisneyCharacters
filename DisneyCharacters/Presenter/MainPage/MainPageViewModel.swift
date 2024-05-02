@@ -56,7 +56,7 @@ final class MainPageViewModel: ObservableObject {
     
     private func createItem(characters: [Character], favoriteIds: [Int]) -> MainPageListViewItem? {
         let items = characters.map {
-            MainPageListItem(id: $0.id, isFavorite: favoriteIds.contains($0.id), title: $0.name, imageUrl: $0.imageUrl)
+            MainPageListItem(id: $0.id, isFavorite: favoriteIds.contains($0.id), title: $0.name, imageUrl: URL(string: $0.imageUrl ?? ""))
         }
         
         let fav = items.filter { $0.isFavorite }

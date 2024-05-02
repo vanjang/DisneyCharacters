@@ -8,13 +8,26 @@
 import SwiftUI
 
 struct MainPageListCell: View {
+    let item: MainPageListItem
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geo in
+            let size: CGFloat = geo.size.height * 0.8
+            let spacing: CGFloat = 12
+            
+            HStack(spacing: spacing) {
+                RemoteImageView(url: item.imageUrl, isCircle: true)
+                    .frame(width: size, height: size)
+                
+                Text(item.title)
+            }
+            .padding(.vertical, spacing)
+        }
     }
 }
 
 struct MainPageListCell_Previews: PreviewProvider {
     static var previews: some View {
-        MainPageListCell()
+        MainPageListCell(item: MainPageListItem(id: 0, isFavorite: false, title: "title", imageUrl: nil))
     }
 }

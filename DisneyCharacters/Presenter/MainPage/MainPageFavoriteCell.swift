@@ -8,13 +8,30 @@
 import SwiftUI
 
 struct MainPageFavoriteCell: View {
+    let item: MainPageListItem
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geo in
+            let size: CGFloat = geo.size.height * 0.8
+            let spacing: CGFloat = 4
+            
+            VStack(spacing: spacing) {
+                RemoteImageView(url: item.imageUrl, isCircle: true)
+                    .frame(width: size, height: size)
+                    .cornerRadius(size / 2)
+                    .aspectRatio(contentMode: .fit)
+                
+                Text(item.title)
+                    .font(.system(size: 12))
+                    .foregroundColor(.black)
+            }
+            .padding(.horizontal, 12)
+        }
     }
 }
 
 struct MainPageFavoriteCell_Previews: PreviewProvider {
     static var previews: some View {
-        MainPageFavoriteCell()
+        MainPageFavoriteCell(item: MainPageListItem(id: 0, isFavorite: false, title: "title", imageUrl: nil))
     }
 }
