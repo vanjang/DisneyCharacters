@@ -12,20 +12,21 @@ import Combine
 class LocalDataServiceTests: XCTestCase {
     var cancellables = Set<AnyCancellable>()
     let localDataService: LocalDataServiceType = LocalDataService()
+    let testKey = "testKey"
     
     override func tearDown() {
         super.tearDown()
         cancellables.removeAll()
-        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.favoriteCharacterKey)
+        UserDefaults.standard.removeObject(forKey: testKey)
     }
     
     func testGetData() throws {
         let testValue = [0, 1, 2]
-        UserDefaults.standard.set(testValue, forKey: UserDefaultsKey.favoriteCharacterKey)
+        UserDefaults.standard.set(testValue, forKey: testKey)
         
         let expectation = XCTestExpectation(description: "testGetData")
         
-        localDataService.getData(key: UserDefaultsKey.favoriteCharacterKey)
+        localDataService.getData(key: testKey)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -47,9 +48,9 @@ class LocalDataServiceTests: XCTestCase {
         
         let expectation = XCTestExpectation(description: "testUpdateData")
         
-        localDataService.update(data: testValue, key: UserDefaultsKey.favoriteCharacterKey)
+        localDataService.update(data: testValue, key: testKey)
         
-        localDataService.getData(key: UserDefaultsKey.favoriteCharacterKey)
+        localDataService.getData(key: testKey)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
