@@ -10,35 +10,45 @@ import SwiftUI
 struct MainPageView: View {
     @EnvironmentObject private var dependencies: DependencyContainer
     @ObservedObject var viewModel: MainPageViewModel
-    @State var state: ViewState<MainPageListViewItem> = .loading
+    
+    @State var showAlert = false
     
     var body: some View {
         NavigationView {
-          contentView
-            .padding()
-            .navigationTitle("Mixed List")
-            .onAppear {
-                print("onAppear")
-                viewModel.load.send(())
-            }
+            contentView
+                .edgesIgnoringSafeArea([.bottom, .horizontal])
+                .navigationBarTitle("Disney Characters", displayMode: .inline)
+                .onLoad(perform: {
+                    viewModel.load.send(())
+                })
+                .onReceive(viewModel.$error) { error in
+                    if error != nil {
+                        showAlert.toggle()
+                    }
+                }
+                .alert(isPresented: $showAlert, error: viewModel.error) {
+                    Button("OK") {}
+                }
         }
     }
     
     @ViewBuilder
     var contentView: some View {
-        switch viewModel.viewState {
-           case .loading:
-               LoadingView()
-           case .empty:
-               EmptyView()
-           case .error(let message):
-               ErrorView(message: message)
-           case .ideal(let viewItem):
-               OrthogonalListView(viewItem: viewItem)
+        ZStack {
+            if let item = viewModel.listItem {
+                OrthogonalListView(viewItem: item) {
+                    viewModel.load.send(())
+                }
                 .environmentObject(dependencies)
-           }
+            } else {
+                EmptyView()
+            }
+            
+            if viewModel.isLoading {
+                LoadingView()
+            }
+        }
     }
-    
 }
 
 struct MainPageView_Previews: PreviewProvider {

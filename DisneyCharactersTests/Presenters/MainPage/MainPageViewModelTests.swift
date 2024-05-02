@@ -27,19 +27,17 @@ final class MainPageViewModelTests: XCTestCase {
         return MainPageViewModel(useCases: useCases)
     }
     
-    func testMainPageListItems() throws {
+    func testMainPageListViewItem() throws {
         // GIVEN
         let viewModel = makeViewModel()
-        let expectation = expectation(description: "testMainPageListItems")
-        var items: [MainPageListItem] = []
+        let expectation = expectation(description: "testMainPageListViewItem")
+        var item: MainPageListViewItem?
         
-        viewModel.$viewState
-            .sink { state in
-                switch state {
-                case .ideal(let i):
-                    items = i.characters
+        viewModel.$listItem
+            .sink { i in
+                if let listItem = i {
+                    item = listItem
                     expectation.fulfill()
-                default: break
                 }
             }
             .store(in: &cancellables)
@@ -49,36 +47,31 @@ final class MainPageViewModelTests: XCTestCase {
         
         // THEN
         waitForExpectations(timeout: 3)
-        XCTAssert(!items.isEmpty)
+        XCTAssert(item != nil)
     }
     
     func testLoading() throws {
         // GIVEN
         let viewModel = makeViewModel()
         let expectation = expectation(description: "testLoading")
-        var isLoading: [Bool] = []
+        var loadingStates: [Bool] = []
+        let loadingExpectation = [false, true, false]
         
-        viewModel.$viewState
-            .sink { state in
-                switch state {
-                case .loading:
-                    isLoading.append(true)
-                default:
-                    isLoading.append(false)
+        viewModel.$isLoading
+            .sink { loading in
+                loadingStates.append(loading)
+                
+                if loadingStates.count == 3 {
                     expectation.fulfill()
-
                 }
             }
             .store(in: &cancellables)
         
         // WHEN
         viewModel.load.send(())
-        
-        // THEN
         waitForExpectations(timeout: 3)
         
-        XCTAssert(isLoading.first!)
-        XCTAssertFalse(isLoading.last!)
+        // THEN
+        XCTAssertEqual(loadingStates, loadingExpectation)
     }
-
 }

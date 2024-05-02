@@ -17,44 +17,52 @@ final class MainPageViewModel: ObservableObject {
     let cellTap = PassthroughSubject<String, Never>()
     
     // MARK: - Output
-    @Published var viewState: ViewState<MainPageListViewItem> = .loading
+    @Published var listItem: MainPageListViewItem?
+    @Published var isLoading = false
+    @Published var error: CustomError?
     
     init(useCases: MainPageUseCasesType) {
         self.useCases = useCases
         
-        bindViewState()
+        bindMainViewListItems()
+        bindLoading()
     }
     
-    private var state: AnyPublisher<ViewState<MainPageListViewItem>, Never> {
-        Publishers.CombineLatest(self.useCases.getCharacters(load: self.load, limit: 5),
-                                 self.useCases.getFavoriteCharacterIds(key: UserDefaultsKey.favoriteCharacterKey).prepend([]))
-            .map { (characters, favIds) in
-                if characters.isEmpty {
-                    return .empty
-                } else {
-                    let items = characters.map {
-                        MainPageListItem(id: $0.id, isFavorite: favIds.contains($0.id), title: $0.name, imageUrl: $0.imageUrl)
-                    }
-//                    let fav = items.filter { $0.isFavorite }
-                    let fav = items.filter { !$0.isFavorite }
-                    let cha = items.filter { !$0.isFavorite }
-                    return .ideal(MainPageListViewItem(favorites: fav, isFavoritesHidden: fav.isEmpty, characters: cha))
+    private var characters: AnyPublisher<[Character], Error> {
+        self.useCases.getCharacters(load: self.load, limit: 20)
+    }
+    
+    private var favoriteIds: AnyPublisher<[Int], Error> {
+        self.useCases.getFavoriteCharacterIds(key: UserDefaultsKey.favoriteCharacterKey).prepend([]).eraseToAnyPublisher()
+    }
+    
+    private func bindMainViewListItems() {
+        Publishers.CombineLatest(characters, favoriteIds)
+            .map { (characters, favIds) -> MainPageListViewItem? in
+                let items = characters.map {
+                    MainPageListItem(id: $0.id, isFavorite: favIds.contains($0.id), title: $0.name, imageUrl: $0.imageUrl)
                 }
+                
+                let fav = items.filter { !$0.isFavorite }
+                let cha = items.filter { !$0.isFavorite }
+                
+                return MainPageListViewItem(favorites: fav, isFavoritesHidden: fav.isEmpty, characters: cha)
             }
-            .catch { error -> AnyPublisher<ViewState, Never> in
-                Just(.error(error.localizedDescription)).eraseToAnyPublisher()
-            }
-            .eraseToAnyPublisher()
+            .catch({ [weak self] e -> AnyPublisher<MainPageListViewItem?, Never> in
+                self?.error = CustomError.general(e)
+                return .empty()
+            })
+            .assignNoRetain(to: \.listItem, on: self)
+            .store(in: &cancellables)
     }
     
-    
-    private func bindViewState() {
-        // because network response is being cached, 'state' can emit the value before 'load' and the order is not guaranteed. Therefore give a little of delay to 'state' in order to guarantee 'loading' is  emitted before 'state'.
-        Publishers.Merge(self.load.map { _ in .loading },
-                         self.state.delay(for: 0.5, scheduler: DispatchQueue.main)
-
-        )
-        .assignNoRetain(to: \.viewState, on: self)
+    private func bindLoading() {
+        Publishers.Merge(self.load.map { _ in true },
+                         Publishers.CombineLatest(characters, favoriteIds)
+                            .map { _ in false }
+                            .replaceError(with: false)
+                            .throttle(for: 1, scheduler: DispatchQueue.main, latest: true))
+        .assignNoRetain(to: \.isLoading, on: self)
         .store(in: &cancellables)
     }
     

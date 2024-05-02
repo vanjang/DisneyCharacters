@@ -8,20 +8,24 @@
 import SwiftUI
 
 struct OrthogonalListView: View {
+    // MARK: - Initialisers
+    let viewItem: MainPageListViewItem
+    let bottomReach: () -> ()
+
+    // MARK: - Enviroment
     @EnvironmentObject private var dependencies: DependencyContainer
     
-    let viewItem: MainPageListViewItem
-//    let cellTap: () -> ()
-    
+    // MARK: - States
+    @State private var bottomReached = false
     
     var body: some View {
         VStack {
-            
+            // Horizontal view for favorite characters
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
                     ForEach(viewItem.favorites) { item in
                         NavigationLink {
-//                            dependencies.detailPageView(id: item.id)
+                            dependencies.detailPageView(id: item.id)
                         } label: {
                             Text(item.title)
                                 .frame(width: 100, height: 100)
@@ -29,35 +33,40 @@ struct OrthogonalListView: View {
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                         }
-
                     }
                 }
-//                .padding(.horizontal, 20)
             }
-            // constant 100 어떻게 처리할지
+            .padding(.vertical, 16)
             .frame(height: viewItem.isFavoritesHidden ? 0 : 100)
             
-            
-            
+            // Vertical view for all characters
             List(viewItem.characters, id: \.id) { item in
-                ForEach(viewItem.favorites) { item in
-                    NavigationLink {
-//                        dependencies.detailPageView(id: item.id)
-                    } label: {
-                        Text(item.title)
-                    }
-
+                NavigationLink {
+                    dependencies.detailPageView(id: item.id)
+                } label: {
+                    Text(item.title)
+                        .frame(height: 100)
                 }
-//                Text(item.title)
+                .onAppear {
+                    if item.id == viewItem.characters.last?.id {
+                        bottomReached = true
+                    }
+                }
+            }
+            .listStyle(PlainListStyle())
+        }
+        .onChange(of: bottomReached) { bottom in
+            if bottom {
+                bottomReached = false
+                bottomReach()
             }
         }
-        .padding()
     }
 }
 
 
 struct OrthogonalListView_Previews: PreviewProvider {
     static var previews: some View {
-        OrthogonalListView(viewItem: MainPageListViewItem(favorites: [], isFavoritesHidden: false, characters: []))//, cellTap: {})
+        OrthogonalListView(viewItem: MainPageListViewItem(favorites: [], isFavoritesHidden: false, characters: []), bottomReach: {})
     }
 }
