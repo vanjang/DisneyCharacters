@@ -71,7 +71,7 @@ struct OrthogonalListView: View {
                 LazyView(dependencies.detailPageView(id: item.id))
             } label: {
                 MainPageListCell(item: item)
-                    .frame(height: 100)
+                    .frame(height: 70)
             }
             .onAppear {
                 if item.id == viewItem.characters.last?.id {

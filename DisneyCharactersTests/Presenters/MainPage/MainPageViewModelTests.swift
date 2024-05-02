@@ -73,4 +73,41 @@ final class MainPageViewModelTests: XCTestCase {
         // THEN
         XCTAssertEqual(loadingStates, loadingExpectation)
     }
+    
+    func testSortListItems() throws {
+        // GIVEN
+        let viewModel = makeViewModel()
+        let expectation = expectation(description: "testLoading")
+        var items: [MainPageListItem] = []
+        var didTapSortTap = false
+        
+        viewModel.$listItem
+            .compactMap { $0 }
+            .sink { item in
+                // WHEN
+                viewModel.sortTap.send(.shortFilms)
+                
+                didTapSortTap = true
+                
+                items = item.characters
+                
+                if didTapSortTap {
+                    expectation.fulfill()
+                }
+
+            }
+            .store(in: &cancellables)
+        
+        viewModel.load.send(())
+        
+        waitForExpectations(timeout: 2)
+        
+        if let sorted = viewModel.listItem?.characters {
+            // THEN
+            XCTAssertFalse(sorted.isEmpty, "Sorted items array should not be empty")
+            XCTAssertEqual(sorted.first?.id, items.first?.id, "First item after sorting should match")
+            XCTAssertEqual(sorted.last?.id, items.last?.id, "Last item after sorting should match")
+        }
+    }
+    
 }

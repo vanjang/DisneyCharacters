@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct MainPageView: View {
+    // MARK: - Environment
     @EnvironmentObject private var dependencies: DependencyContainer
+    
+    // MARK: - Init
     @ObservedObject var viewModel: MainPageViewModel
     
+    // MARK: - States
     @State var showAlert = false
+    @State var showAlertSheet = false
     
     var body: some View {
         NavigationView {
@@ -28,6 +33,21 @@ struct MainPageView: View {
                 }
                 .alert(isPresented: $showAlert, error: viewModel.error) {
                     Button("OK") {}
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Sort") {
+                            showAlertSheet.toggle()
+                        }
+                        .actionSheet(isPresented: $showAlertSheet) {
+                            let buttons = viewModel.sortTypes.map { t -> ActionSheet.Button in
+                                    .default(Text(t.rawValue)) {
+                                        viewModel.sortTap.send(t)
+                                    }
+                            } + [.cancel()]
+                            return ActionSheet(title: Text("Select Sort Option"), buttons: buttons)
+                        }
+                    }
                 }
         }
     }
