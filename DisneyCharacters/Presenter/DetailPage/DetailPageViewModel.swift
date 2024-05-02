@@ -17,13 +17,16 @@ final class DetailPageViewModel: ObservableObject {
     let didTapButton = PassthroughSubject<Void, Never>()
     
     // MARK: - Output
-    @Published var viewState: ViewState<DetailPageItem> = .loading
+    @Published private(set) var item: DetailPageItem?
+    @Published private(set) var error: CustomError?
+    @Published private(set) var isLoading = false
     
     init(id: Int, useCases: DetailPageUseCasesType) {
         self.useCases = useCases
         self.id = id
         
-        bindCharacterDetail()
+        bindDetailPageItem()
+        bindLoading()
         bindUpdateFavoriteCharacterIds()
     }
     
@@ -31,26 +34,26 @@ final class DetailPageViewModel: ObservableObject {
         self.useCases.getCharacter(id: id)
     }
     
-    private var favoriteCharacterIds: AnyPublisher<[Int], Error> {
-        self.useCases.getFavoriteCharacterIds(with: UserDefaultsKey.favoriteCharacterKey)
+    private var favoriteIds: AnyPublisher<[Int], Error> {
+        self.useCases.getFavoriteCharacterIds(with: UserDefaultsKey.favoriteCharacterKey).prepend([]).eraseToAnyPublisher()
     }
     
-    private func bindCharacterDetail() {
-        Publishers.CombineLatest(character, favoriteCharacterIds)
-        .map { (character, favoriteIds) -> ViewState in
-                .ideal(DetailPageItem(id: character.id,title: character.name, imageUrl: character.imageUrl, isFavorite: favoriteIds.contains(character.id)))
-        }
-        .catch { error -> AnyPublisher<ViewState, Never> in
-            Just(.error(error.localizedDescription)).eraseToAnyPublisher()
-        }
-        .assignNoRetain(to: \.viewState, on: self)
-        .store(in: &cancellables)
+    private func bindDetailPageItem() {
+        Publishers.CombineLatest(character, favoriteIds)
+            .map { (character, favoriteIds) -> DetailPageItem? in
+                DetailPageItem(id: character.id,title: character.name, imageUrl: character.imageUrl, isFavorite: favoriteIds.contains(character.id))
+            }
+            .catch { [weak self] e -> AnyPublisher<DetailPageItem?, Never> in
+                self?.error = .general(e)
+                return .empty()
+            }
+            .assignNoRetain(to: \.item, on: self)
+            .store(in: &cancellables)
     }
     
     private func bindUpdateFavoriteCharacterIds() {
         didTapButton
-            .setFailureType(to: Error.self)
-            .combineLatest(favoriteCharacterIds) { $1 }
+            .combineLatest(favoriteIds.replaceError(with: [])) { $1 }
             .map { [unowned self] favIds -> ([Int], String) in
                 var ids = favIds
                 ids.toggle(self.id)
@@ -58,6 +61,17 @@ final class DetailPageViewModel: ObservableObject {
             }
             .sink(receiveCompletion: { _ in }, receiveValue: useCases.updateFavoriteCharacter)
             .store(in: &cancellables)
+    }
+    
+    private func bindLoading() {
+        Publishers.Merge3(Just(true),
+                          didTapButton.map { _ in true },
+                          Publishers.CombineLatest(character, favoriteIds)
+                            .map { _ in false }
+                            .replaceError(with: false)
+                            .throttle(for: 1, scheduler: DispatchQueue.main, latest: true))
+        .assignNoRetain(to: \.isLoading, on: self)
+        .store(in: &cancellables)
     }
     
     deinit {

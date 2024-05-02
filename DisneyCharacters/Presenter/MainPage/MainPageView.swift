@@ -17,7 +17,7 @@ struct MainPageView: View {
         NavigationView {
             contentView
                 .edgesIgnoringSafeArea([.bottom, .horizontal])
-                .navigationBarTitle("Disney Characters", displayMode: .inline)
+                .navigationBarTitle("Home", displayMode: .inline)
                 .onLoad(perform: {
                     viewModel.load.send(())
                 })

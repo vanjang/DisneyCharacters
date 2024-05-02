@@ -10,8 +10,32 @@ import SwiftUI
 struct DetailPageView: View {
     @ObservedObject var viewModel: DetailPageViewModel
     
+    @State var showAlert = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            VStack(spacing: 30) {
+                Image(systemName: "xmark")
+                
+                Button((viewModel.item?.isFavorite ?? false) ? "Remove from favorites" : "Add to favorites") {
+                    viewModel.didTapButton.send(())
+                }
+            }
+            
+            if viewModel.isLoading {
+                LoadingView()
+            }
+            
+        }
+        .navigationTitle(viewModel.item?.title ?? "Unknown")
+        .onReceive(viewModel.$error) { error in
+            if error != nil {
+                showAlert.toggle()
+            }
+        }
+        .alert(isPresented: $showAlert, error: viewModel.error) {
+            Button("OK") {}
+        }
     }
 }
 

@@ -58,6 +58,7 @@
 		A3CF3F2A2BE3CC8900D47A74 /* ViewDidLoadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CF3F292BE3CC8900D47A74 /* ViewDidLoadModifier.swift */; };
 		A3CF3F2C2BE3CCB000D47A74 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CF3F2B2BE3CCB000D47A74 /* View+Extension.swift */; };
 		A3CF3F2E2BE3D6BA00D47A74 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CF3F2D2BE3D6BA00D47A74 /* CustomError.swift */; };
+		A3CF3F302BE3EA4800D47A74 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CF3F2F2BE3EA4800D47A74 /* LazyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		A3CF3F292BE3CC8900D47A74 /* ViewDidLoadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifier.swift; sourceTree = "<group>"; };
 		A3CF3F2B2BE3CCB000D47A74 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		A3CF3F2D2BE3D6BA00D47A74 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		A3CF3F2F2BE3EA4800D47A74 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				A36F85E42BE184B200B9D515 /* ViewState.swift */,
 				A34928562BE25D6D00510603 /* LoadingView.swift */,
 				A34928582BE25D7600510603 /* EmptyView.swift */,
+				A3CF3F2F2BE3EA4800D47A74 /* LazyView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3CF3F302BE3EA4800D47A74 /* LazyView.swift in Sources */,
 				A36F85DE2BE1759F00B9D515 /* AppDependencyContainer.swift in Sources */,
 				A36F858E2BE12BD600B9D515 /* MainPageUseCasesType.swift in Sources */,
 				A34928502BE25C0B00510603 /* DetailPageItem.swift in Sources */,

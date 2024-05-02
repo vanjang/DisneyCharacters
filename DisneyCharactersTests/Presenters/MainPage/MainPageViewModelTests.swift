@@ -34,11 +34,10 @@ final class MainPageViewModelTests: XCTestCase {
         var item: MainPageListViewItem?
         
         viewModel.$listItem
+            .compactMap { $0 }
             .sink { i in
-                if let listItem = i {
-                    item = listItem
-                    expectation.fulfill()
-                }
+                item = i
+                expectation.fulfill()
             }
             .store(in: &cancellables)
         

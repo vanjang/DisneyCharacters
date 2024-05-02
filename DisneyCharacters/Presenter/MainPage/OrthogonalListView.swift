@@ -25,7 +25,7 @@ struct OrthogonalListView: View {
                 HStack(spacing: 20) {
                     ForEach(viewItem.favorites) { item in
                         NavigationLink {
-                            dependencies.detailPageView(id: item.id)
+                            LazyView(dependencies.detailPageView(id: item.id))
                         } label: {
                             Text(item.title)
                                 .frame(width: 100, height: 100)
@@ -42,7 +42,7 @@ struct OrthogonalListView: View {
             // Vertical view for all characters
             List(viewItem.characters, id: \.id) { item in
                 NavigationLink {
-                    dependencies.detailPageView(id: item.id)
+                    LazyView(dependencies.detailPageView(id: item.id))
                 } label: {
                     Text(item.title)
                         .frame(height: 100)
@@ -63,7 +63,6 @@ struct OrthogonalListView: View {
         }
     }
 }
-
 
 struct OrthogonalListView_Previews: PreviewProvider {
     static var previews: some View {

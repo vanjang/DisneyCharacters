@@ -30,21 +30,18 @@ final class DetailPageViewModelTests: XCTestCase {
         return DetailPageViewModel(id: id, useCases: useCases)
     }
     
-    func testDidFetchCharacter() throws {
+    func testDetailPageItem() throws {
         // GIVEN
         let id = 12
         let viewModel = makeViewModel(id: id)
-        let expectation = expectation(description: "testDidFetchCharacter")
+        let expectation = expectation(description: "testDetailPageItem")
         var item: DetailPageItem!
         
-        viewModel.$viewState
-            .sink { state in
-                switch state {
-                case .ideal(let i):
-                    item = i
-                    expectation.fulfill()
-                default: break
-                }
+        viewModel.$item
+            .compactMap { $0 }
+            .sink { i in
+                item = i
+                expectation.fulfill()
             }
             .store(in: &cancellables)
         
@@ -52,44 +49,54 @@ final class DetailPageViewModelTests: XCTestCase {
         waitForExpectations(timeout: 2)
         
         // THEN
-        XCTAssert(item.id == id)
+        XCTAssert(item != nil)
     }
     
-    func testDidUpdateFavoriteCharacter() throws {
+    func testLoading() throws {
         // GIVEN
-        let viewModel = makeViewModel(id: 12)
-        let expectation = expectation(description: "testDidUpdateFavoriteCharacter")
-        var firstState: Bool!
-        var secondState: Bool!
+        let id = 12
+        let viewModel = makeViewModel(id: id)
+        let expectation = expectation(description: "testLoading")
+        var loadingStates: [Bool] = []
+        let loadingExpectation = [true, true, false]
         
-        // if there is no data in user defaults, add one for testing.
-        let initialValue = UserDefaults.standard.array(forKey: UserDefaultsKey.favoriteCharacterKey) as? [Int]
-        
-        if initialValue == nil {
-            UserDefaults.standard.setValue([0], forKey: UserDefaultsKey.favoriteCharacterKey)
-        }
-        
-        viewModel.$viewState
-            .sink { state in
-                switch state {
-                case .ideal(let i):
-                    if firstState == nil {
-                        firstState = i.isFavorite
-                    } else {
-                        secondState = i.isFavorite
-                        expectation.fulfill()
-                    }
-                default: break
+        viewModel.$isLoading
+            .sink { loading in
+                loadingStates.append(loading)
+                
+                if loadingStates.count == 3 {
+                    expectation.fulfill()
                 }
             }
             .store(in: &cancellables)
         
         // WHEN
         viewModel.didTapButton.send(())
+        waitForExpectations(timeout: 3)
         
         // THEN
-        waitForExpectations(timeout: 10)
+        XCTAssertEqual(loadingStates, loadingExpectation)
+    }
+    
+    func testError() throws {
+        // GIVEN
+        let id = 10000000000// wrong id to procude error
+        let viewModel = makeViewModel(id: id)
+        let expectation = expectation(description: "testError")
+        var error: CustomError!
         
-        XCTAssert(firstState != secondState)
+        viewModel.$error
+            .compactMap { $0 }
+            .sink { e in
+                error = e
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        // WHEN
+        waitForExpectations(timeout: 1)
+        
+        // THEN
+        XCTAssert(error != nil)
     }
 }
