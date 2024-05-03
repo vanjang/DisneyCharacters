@@ -18,8 +18,6 @@ struct MainPageFavoriteCell: View {
             VStack(spacing: spacing) {
                 RemoteImageView(url: item.imageUrl, isCircle: true)
                     .frame(width: size, height: size)
-                    .cornerRadius(size / 2)
-                    .aspectRatio(contentMode: .fit)
                 
                 Text(item.title)
                     .font(.system(size: 12))
