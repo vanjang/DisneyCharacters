@@ -23,7 +23,7 @@ This app displays Disney characters retrieved from [Disney dev API](https://disn
 3. System Design
 Adhering to Clean Architecture, project layers are separated as follows:
 - Application: Includes the app's entry point as @main App and Dependencies. Dependencies are propagated via EnvironmentObject.
-- Domain: Contains Entities, RepositoryInterfaces, and UseCases. Each of these is divided into MainPage and DetailPage, adhering to their respective purposes.
+- Domain: Contains Entities, RepositoryInterfaces, and UseCases. Each of these is divided into MainPage and DetailPage, adhering to their respective purposes.
 - Data: Defines Repository implementations.
 - Services: Defines the app's data transfer implementations including remote(NetworkService) and local(UserDefaultsStorage).
 - Presenters: Contains MainPage and DetailPage, associated with corresponding Views and ViewModels.
